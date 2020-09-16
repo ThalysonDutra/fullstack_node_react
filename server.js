@@ -2,19 +2,11 @@ const express = require("express"); // importar módulo express
 const server = express(); // instanciar o express
 const dotenv = require("dotenv").config();
 
+//Cofigurações
+server.use(express.json()); // permirir resposta ao cliente em formato json;
+
 //Rotas
-
-server.get('/', (req,res)=>{
-    res.send('Bem vindo ao meu servidor NodeJS!!');
-});
-
-server.get('/cursos', (req,res)=>{
-    res.json({
-        'React': 'React Native',
-        'NodeJs': 'NodeJS',
-        'ML': 'Data Science'
-    });
-});
+server.use(require('./src/routes'));
 
 //Inicializar o servidor
 
